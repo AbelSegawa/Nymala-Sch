@@ -1,0 +1,106 @@
+WindowManager:
+    LoginScreen:
+    ClassesScreen:
+    StudentScreen:
+
+<LoginScreen>:
+    name: "login"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+
+        Label:
+            text: "NYMALA ACADEMY"
+
+        TextInput:
+            id: email
+            hint_text: "Email"
+
+        TextInput:
+            id: pwd
+            hint_text: "Password"
+            password: True
+
+        Button:
+            text: "LOGIN"
+            on_press: root.login()
+
+        Label:
+            id: msg
+            color: 1,0,0,1
+
+<ClassesScreen>:
+    name: "classes"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: "Select Class"
+            size_hint_y: .1
+
+        ScrollView:
+
+            GridLayout:
+                id: class_box
+                cols: 1
+                spacing: 10
+                size_hint_y: None
+                height: self.minimum_height
+
+<StudentScreen>:
+    name: "student"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+        spacing: 5
+
+        Label:
+            id: title
+            text: "Students"
+
+        TextInput:
+            id: name
+            hint_text: "Student Name"
+
+        TextInput:
+            id: gender
+            hint_text: "Gender"
+
+        TextInput:
+            id: dob
+            hint_text: "Date Of Birth"
+
+        TextInput:
+            id: phone
+            hint_text: "Parent Phone"
+
+        TextInput:
+            id: emis
+            hint_text: "EMIS Number"
+
+        Button:
+            text: "Save Student"
+            on_press: root.add_student()
+
+        Label:
+            id: msg
+            color: 0,1,0,1
+
+        ScrollView:
+
+            Label:
+                id: students
+                text: ""
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+
+        Button:
+            text: "Back"
+            size_hint_y: .12
+            on_press:
+                app.root.current = "classes"
